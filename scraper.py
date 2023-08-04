@@ -29,10 +29,14 @@ def create_hackernews(links_list, vote_list):
 
 
 def main():
+    linksPage1: element.ResultSet
+    linksPage2: element.ResultSet
+    vote_subtext_page1: element.ResultSet
+    vote_subtext_page2: element.ResultSet
     linksPage1, vote_subtext_page1 = getBeautifulSoupitems("https://news.ycombinator.com/news")
     linksPage2, vote_subtext_page2 = getBeautifulSoupitems("https://news.ycombinator.com/news?p=2")
-    superlist = linksPage1 + linksPage2
-    supervotes = vote_subtext_page1 + vote_subtext_page2
+    superlist: list = linksPage1 + linksPage2
+    supervotes: list = vote_subtext_page1 + vote_subtext_page2
     hn: list = create_hackernews(superlist, supervotes)
     pprint(hn)
 
